@@ -1,0 +1,99 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    background-color: rgb(219, 235, 235);
+    font-family: 'Young Serif', serif;
+}
+
+.main-container {
+    margin: auto;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border: none;
+}
+
+.banner-img {
+    max-width: 100%;
+}
+
+.title,
+.subtitle {
+    margin: 5px 10px;
+}
+
+#menu-container {
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+    background-color: white;
+}
+
+.cookie-container {
+    max-width: 100%;
+    padding: 20px 10px;
+    display: flex;
+    align-items: center;
+    gap: 3.5rem;
+}
+
+.cookie-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 1px solid gray;
+    flex-shrink: 0;
+}
+
+.price-info-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border: none;
+}
+
+.select-btn {
+    border-radius: 50%;
+    padding: 6px;
+    border: none;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.price-info-container:active {
+    text-shadow: 0px 1px 1px gray;
+}
+
+.cookie-name,
+.price {
+    font-size: small;
+}
+
+.ingredients {
+    font-size: xx-small;
+}
+
+.divider {
+    max-width: 350px;
+    height: 1px;
+    border-top: 1px solid #D2D2D2;
+}
+
+.active {
+    box-shadow: 0px 0px 1px 1px gray;
+}
