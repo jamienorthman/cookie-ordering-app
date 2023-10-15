@@ -29,8 +29,13 @@ body {
 }
 
 .title,
-.subtitle {
+.subtitle,
+.details {
     margin: 5px 10px;
+}
+
+.details {
+    font-size: x-small;
 }
 
 #menu-container {
@@ -42,19 +47,25 @@ body {
     background-color: white;
 }
 
+p {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
 .cookie-container {
     max-width: 100%;
     padding: 20px 10px;
     display: flex;
     align-items: center;
-    gap: 3.5rem;
+    gap: 5.5rem;
+    cursor: pointer;
 }
 
 .cookie-img {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    border: 1px solid gray;
+    border: 1px solid #D2D2D2;
     flex-shrink: 0;
 }
 
@@ -73,10 +84,8 @@ body {
     height: 30px;
     cursor: pointer;
     flex-shrink: 0;
-}
-
-.price-info-container:active {
-    text-shadow: 0px 1px 1px gray;
+    background-color: white;
+    border: 1px solid #D2D2D2;
 }
 
 .cookie-name,
@@ -86,14 +95,33 @@ body {
 
 .ingredients {
     font-size: xx-small;
+    color: #8B8B8B;
+}
+
+.divider-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
 }
 
 .divider {
-    max-width: 350px;
-    height: 1px;
+    width: 275px;
     border-top: 1px solid #D2D2D2;
 }
 
-.active {
-    box-shadow: 0px 0px 1px 1px gray;
+/* Selected States */
+
+.cookie-container:hover p {
+    text-shadow: 0px 2px 1px #b8b4b4;
 }
+.cookie-container:hover > button {
+    box-shadow: 0px 2px 1px 1px #b8b4b4;
+}
+.cookie-container:hover > .cookie-img {
+    box-shadow: 0px 2px 1px 1px #b8b4b4;
+}
+
+/*.divider:hover {
+    box-shadow: 0px 1px 1px 1px #b8b4b4;
+} /*

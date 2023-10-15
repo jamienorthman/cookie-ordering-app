@@ -12,10 +12,12 @@ function getCookieHtml(cookieMenu) {
                 <div class="price-info-container">
                     <p class="cookie-name">${cookie.name}</p>
                     <p class="ingredients">${renderedIngredients}</p>
-                    <p class="price-info-container">${cookie.price}</p>
+                    <p class="price">${cookie.price}</p>
                 </div>
                 <button class="select-btn">${'+'}</button>
-                <hr class="divider">
+            </div>
+            <div class="divider-container">
+                <div class="divider"></div>
             </div>`
     })
     return cookieHtml.join('')
