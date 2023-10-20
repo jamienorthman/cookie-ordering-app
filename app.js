@@ -1,23 +1,62 @@
 import { cookieMenu } from '/data.js'
  
 const menuContainer = document.getElementById('menu-container')
+const orderContainer = document.getElementById('order-container')
 
 //One event listener to group all clicks using data attributes
 document.addEventListener('click', (e) => {
     if (e.target.dataset.select) {
         handleSelectionClick(e.target.dataset.select)
+    } else if (e.target.dataset.remove) {
+        handleRemoveClick(e.target.dataset.remove)
     }
 })
 
-// Tests that the id property in data.js is tha same as id stored in 
+//initialize orderArray
+let orderArray = []
+
+// Tests that the id property in data.js is the same as id stored in 
 //cookieData, which comes from select-button data attribute.
-//Increments targetCookieObj. Use [0] because we want to target the
-//object in array of which there is only one (id is unique)
+// Use [0] because we want to target the object in array of which there 
+//is only one (id is unique). Pushes targetCookieObj to orderArray
 function handleSelectionClick(cookieData) {
     const targetCookieObj = cookieMenu.filter((cookie) => {
         return cookie.id == cookieData
     })[0]
-    return targetCookieObj
+    orderArray.push(targetCookieObj)
+    getOrderHtml(orderArray)
+    orderArray.forEach(item => {
+        let reviewOrder = document.querySelector('.order-title')
+        reviewOrder.innerHTML += `
+            <div class="item-review">
+                <p class="cookie-review">${item.name}</p>
+                <button class="remove-btn" data-remove="${item.id}">remove</button>
+                <p class="price-review">${item.price}</p>
+            </div>
+            `
+    })
+    console.log(orderArray)
+}
+
+function handleRemoveClick(itemIndex) {
+    const targetItemObj = orderArray.filter((item) => {
+        return item.id == itemIndex
+    })[0]
+    orderArray.pop(targetItemObj)
+    console.log(orderArray)
+}
+
+function getOrderHtml() {
+    orderContainer.style.display = 'flex'
+    return orderContainer.innerHTML =
+            `<p class="order-title">Your Order</p>
+            <div class="order-divider"></div>
+            <div class="total-price-review">
+                <p class="total-price-title">Total Price</p>
+                <p class="total-price"></p>
+            </div>
+            <button class="order-btn">Complete order</button>
+            `
 }
 
 function getCookieHtml(cookieMenu) {
@@ -44,6 +83,9 @@ function getCookieHtml(cookieMenu) {
 }
 
 menuContainer.innerHTML = getCookieHtml(cookieMenu)
+
+
+
 
 //event.target to use one event listener for all select-btns and access parentEl(cookie-container):
 /*menuContainer.addEventListener('click', highlightSelection)
