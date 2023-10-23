@@ -7,7 +7,7 @@ export const cookieMenu = [
         id: 0
     },
     {
-        name: "Double Chocolate Chunk",
+        name: "Double Choc-Chunk",
         ingredients: ["dark chocolate", "milk chocolate", "brownie"],
         price: 12,
         img: "images/doublechoc.jpg",

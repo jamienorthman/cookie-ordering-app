@@ -149,7 +149,13 @@ p {
 .item-review,
 .total-price-review {
     display: flex;
+    align-items: center;
     gap: 1rem;
+}
+
+.item-review {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .cookie-review,
@@ -161,6 +167,10 @@ p {
 .remove-btn {
     background-color: transparent;
     border: none;
+}
+
+.price-review {
+    margin-left: 52px;
 }
 
 .order-divider {

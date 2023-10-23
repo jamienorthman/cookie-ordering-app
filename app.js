@@ -3,6 +3,20 @@ import { cookieMenu } from '/data.js'
 const menuContainer = document.getElementById('menu-container')
 const orderContainer = document.getElementById('order-container')
 
+//hint: could use UIDs to identify different elements of the order basket
+//let uidCounter = 0
+
+orderContainer.innerHTML =
+`<p class="order-title">Your Order</p>
+<div class="order-list"></div>
+<div class="order-divider"></div>
+<div class="total-price-review">
+    <p class="total-price-title">Total Price</p>
+    <p class="total-price"></p>
+</div>
+<button class="order-btn">Complete order</button>
+`
+
 //One event listener to group all clicks using data attributes
 document.addEventListener('click', (e) => {
     if (e.target.dataset.select) {
@@ -24,39 +38,53 @@ function handleSelectionClick(cookieData) {
         return cookie.id == cookieData
     })[0]
     orderArray.push(targetCookieObj)
-    getOrderHtml(orderArray)
-    orderArray.forEach(item => {
-        let reviewOrder = document.querySelector('.order-title')
-        reviewOrder.innerHTML += `
-            <div class="item-review">
-                <p class="cookie-review">${item.name}</p>
-                <button class="remove-btn" data-remove="${item.id}">remove</button>
-                <p class="price-review">${item.price}</p>
-            </div>
-            `
-    })
-    console.log(orderArray)
+
+    //hint: alternative: build orderArray with objects like the following:
+    //orderArray.push({"uid" : 12349761234, "product" : targetCookieObj})
+
+    updateOrderHtml()
+    renderOrder()
+    //console.log(orderArray)    
 }
 
 function handleRemoveClick(itemIndex) {
-    const targetItemObj = orderArray.filter((item) => {
-        return item.id == itemIndex
-    })[0]
-    orderArray.pop(targetItemObj)
-    console.log(orderArray)
+    //const targetItemObj = orderArray.filter((item) => {
+    //    return orderArray.indexOf(item) == itemIndex
+    //})[0]
+    orderArray.splice(itemIndex, 1)
+    // hint: as an alternative to rebuilding the html with renderOrder(),
+    //       the following could be used to just remove one element at a time
+    //       (in this case, the respective itemIndex needs to be figured out via the item's UID)
+    //let removedItem = document.querySelectorAll('.item-review')[itemIndex]
+    //removedItem.remove()
+    updateOrderHtml()
+    renderOrder()
+}
+console.log(orderArray)
+
+function renderOrder() {
+    const reviewOrder = document.querySelector('.order-list')
+    reviewOrder.innerHTML = ""
+    //hint: when using UIDs, we might need to change item.img to product.item.img, etc.
+    orderArray.forEach(item => {
+        reviewOrder.innerHTML += `
+            <div class="item-review">
+                <img src="${item.img}" class="cookie-img">
+                <p class="cookie-review">${item.name}</p>
+                <button class="remove-btn" data-remove="${orderArray.indexOf(item)}">remove</button>
+                <p class="price-review">$${item.price}</p>
+            </div>
+            `
+    })
 }
 
-function getOrderHtml() {
-    orderContainer.style.display = 'flex'
-    return orderContainer.innerHTML =
-            `<p class="order-title">Your Order</p>
-            <div class="order-divider"></div>
-            <div class="total-price-review">
-                <p class="total-price-title">Total Price</p>
-                <p class="total-price"></p>
-            </div>
-            <button class="order-btn">Complete order</button>
-            `
+function updateOrderHtml() {
+    if (orderArray.length > 0) {
+        orderContainer.style.display = 'flex'
+    } 
+    else {
+        orderContainer.style.display = 'none'
+    } 
 }
 
 function getCookieHtml(cookieMenu) {
@@ -83,14 +111,3 @@ function getCookieHtml(cookieMenu) {
 }
 
 menuContainer.innerHTML = getCookieHtml(cookieMenu)
-
-
-
-
-//event.target to use one event listener for all select-btns and access parentEl(cookie-container):
-/*menuContainer.addEventListener('click', highlightSelection)
-
-function highlightSelection(e) {
-    document.getElementById(e.target.id).parentElement.classList.add('selected')
-}*/
-
