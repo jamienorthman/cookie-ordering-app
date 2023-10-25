@@ -3,8 +3,8 @@ import { cookieMenu } from '/data.js'
 const menuContainer = document.getElementById('menu-container')
 const orderContainer = document.getElementById('order-container')
 
-//hint: could use UIDs to identify different elements of the order basket
-//let uidCounter = 0
+//use uuids to identify different elements of the order basket
+//let uuidCounter = 0
 
 orderContainer.innerHTML =
 `<p class="order-title">Your Order</p>
@@ -37,24 +37,19 @@ function handleSelectionClick(cookieData) {
     const targetCookieObj = cookieMenu.filter((cookie) => {
         return cookie.id == cookieData
     })[0]
-    orderArray.push(targetCookieObj)
-
-    //hint: alternative: build orderArray with objects like the following:
-    //orderArray.push({"uid" : 12349761234, "product" : targetCookieObj})
-
+    orderArray.unshift(targetCookieObj)
     updateOrderHtml()
-    renderOrder()
-    //console.log(orderArray)    
+    renderOrder()  
 }
 
 function handleRemoveClick(itemIndex) {
-    //const targetItemObj = orderArray.filter((item) => {
-    //    return orderArray.indexOf(item) == itemIndex
+    //const itemObj = orderArray.filter((item) => {
+    //    return item.uuid == itemIndex
     //})[0]
     orderArray.splice(itemIndex, 1)
-    // hint: as an alternative to rebuilding the html with renderOrder(),
-    //       the following could be used to just remove one element at a time
-    //       (in this case, the respective itemIndex needs to be figured out via the item's UID)
+    // as an alternative to rebuilding the html with renderOrder(),
+    // the following could be used to just remove one element at a time
+    // (in this case, the respective itemIndex needs to be figured out via the item's uuid)
     //let removedItem = document.querySelectorAll('.item-review')[itemIndex]
     //removedItem.remove()
     updateOrderHtml()
@@ -65,13 +60,14 @@ console.log(orderArray)
 function renderOrder() {
     const reviewOrder = document.querySelector('.order-list')
     reviewOrder.innerHTML = ""
-    //hint: when using UIDs, we might need to change item.img to product.item.img, etc.
+
     orderArray.forEach(item => {
         reviewOrder.innerHTML += `
             <div class="item-review">
                 <img src="${item.img}" class="cookie-img">
                 <p class="cookie-review">${item.name}</p>
-                <button class="remove-btn" data-remove="${orderArray.indexOf(item)}">remove</button>
+                <button class="remove-btn" data-remove="
+                ${orderArray.indexOf(item)}">remove</button>
                 <p class="price-review">$${item.price}</p>
             </div>
             `
@@ -85,6 +81,12 @@ function updateOrderHtml() {
     else {
         orderContainer.style.display = 'none'
     } 
+    const totalPrice = orderArray.reduce((total, currentItem) => 
+    total + currentItem.price, 0
+    )
+    const totalDisplay = document.querySelector('.total-price')
+    totalDisplay.textContent = `$${totalPrice}`
+    console.log(totalPrice)
 }
 
 function getCookieHtml(cookieMenu) {

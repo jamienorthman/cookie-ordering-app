@@ -150,12 +150,16 @@ p {
 .total-price-review {
     display: flex;
     align-items: center;
-    gap: 1rem;
 }
 
 .item-review {
+    gap: 1rem;
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+.total-price-review {
+    gap: 15rem;
 }
 
 .cookie-review,
