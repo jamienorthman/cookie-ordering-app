@@ -209,7 +209,6 @@ p {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
     border: none;
     border-radius: 4px;
     width: 300px;
@@ -223,18 +222,40 @@ input {
     background-color: transparent;
     border-radius: 3px;
     width: 100%;
-    color: #b1abab;
+    color: black;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     padding: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+::placeholder {
+    color: #b1abab;
 }
 
 .payment-btn {
     font-size: medium;
     cursor: pointer;
+    margin-top: 10px;
 }
 
 .payment-title {
     margin-bottom: 5px;
+}
+
+.order-confirm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    background: #ECFDF5;
+    margin: 10px auto;
+    padding: 20px;
+}
+
+.order-confirm-msg {
+    color: #065F46;
+    font-size: medium;
 }
 
 
