@@ -50,8 +50,14 @@ function handleRemoveClick(itemIndex) {
 console.log(orderArray)
 
 function handlePayClick() {
+    const payName = document.querySelector('.payment-name').value
     payModal.style.display = 'none'
-    // display thank you message
+    orderContainer.innerHTML = `
+    <div class="order-confirm">
+        <p class="order-confirm-msg">Thanks, ${payName}! 
+        Your order is on its way!</p>
+    </div>
+    `
 }
 
 function handleOrderClick() {
