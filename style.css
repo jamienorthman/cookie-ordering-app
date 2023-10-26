@@ -181,7 +181,8 @@ p {
     border-top: 1.5px solid black;
 }
 
-.order-btn {
+.order-btn,
+.payment-btn {
     border: none;
     background-color: #16DB99;
     color: white;
@@ -192,8 +193,48 @@ p {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.order-btn:hover {
-    box-shadow: 0px 1px 2px 0px black;
+.order-btn:hover,
+.payment-btn:hover {
+    box-shadow: 0px 0px 10px black;
+}
+
+#payment-modal{
+    display: none; /*flex when displayed*/
+    position: fixed;
+    margin: auto;
+    padding: 15px 10px 10px 10px;
+    top: 100px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    border: none;
+    border-radius: 4px;
+    width: 300px;
+    height: 340px;
+    background-color: #FFF;
+    box-shadow: 5px 5px 10px #d1cccc;
+}
+
+input {
+    border: 1px solid #b1abab;
+    background-color: transparent;
+    border-radius: 3px;
+    width: 100%;
+    color: #b1abab;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 15px;
+}
+
+.payment-btn {
+    font-size: medium;
+    cursor: pointer;
+}
+
+.payment-title {
+    margin-bottom: 5px;
 }
 
 
