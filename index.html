@@ -7,26 +7,51 @@
     <!--Google Fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Young+Serif&display=swap" rel="stylesheet">
-    <!--Font Awesome CDN-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Young+Serif&display=swap" 
+    rel="stylesheet">
     <!--CSS-->
     <link href="style.css" rel="stylesheet">
     <title>Emergency Cookie</title>
 </head>
 <body>
     <div class="main-container" id="main-container">
-        <img class="banner-img" src="vyshnavi-bisani-z8kriatLFdA-unsplash.jpg">
+        <img class="banner-img" 
+        src="vyshnavi-bisani-z8kriatLFdA-unsplash.jpg">
         <h3 class="title">Emergency Cookie!</h3>
         <p class="subtitle">Get your cookies NOW</p>
         <p class="details">*Each box contains 10 cookies</p>
+        
         <div id="menu-container">
         
         </div>
-        <!--Must move content in order-container content to JS-->
+
         <div class="order-container" id="order-container">
-            
+            <p class="order-title">Your Order</p>
+            <div class="order-list"></div>
+            <div class="order-divider"></div>
+            <div class="total-price-review">
+                <p class="total-price-title">Total Price</p>
+                <p class="total-price"></p>
+            </div>
+            <button class="order-btn" id="order-btn" 
+            data-order="order-btn">Complete order</button>
         </div>
+
+    </div>
+    
+    <div class="payment-modal" id="payment-modal">
+        <h4 class="payment-title">Enter card details</h4>
+        <input type="text" class="payment-name" 
+         placeholder="Enter your name" required>
+        <input type="tel" class="payment-card"  
+        inputmode="numeric" pattern="[0-9\s]{13,19}" 
+        autocomplete="cc-number" maxlength="19" 
+        placeholder="Enter card number" required>
+        <input type="tel" class="payment-cvv"  
+        inputmode="numeric" pattern="\d*"
+        maxlength="4" placeholder="Enter CVV" required>
+        <button class="payment-btn" id="pay-btn"
+        data-pay="pay-btn">Pay</button>
     </div>
     
     
