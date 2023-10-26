@@ -41,17 +41,19 @@
     
     <div class="payment-modal" id="payment-modal">
         <h4 class="payment-title">Enter card details</h4>
-        <input type="text" class="payment-name" 
-         placeholder="Enter your name" required>
-        <input type="tel" class="payment-card"  
-        inputmode="numeric" pattern="[0-9\s]{13,19}" 
-        autocomplete="cc-number" maxlength="19" 
-        placeholder="Enter card number" required>
-        <input type="tel" class="payment-cvv"  
-        inputmode="numeric" pattern="\d*"
-        maxlength="4" placeholder="Enter CVV" required>
-        <button class="payment-btn" id="pay-btn"
-        data-pay="pay-btn">Pay</button>
+        <form>
+            <input type="text" class="payment-name" 
+            placeholder="Enter your name" required>
+            <input type="tel" class="payment-card"  
+            inputmode="numeric" pattern="[0-9\s]{13,19}" 
+            autocomplete="cc-number" maxlength="19" 
+            placeholder="Enter card number" required>
+            <input type="tel" class="payment-cvv"  
+            inputmode="numeric" pattern="\d*"
+            maxlength="4" placeholder="Enter CVV" required>
+            <button class="payment-btn" id="pay-btn"
+            data-pay="pay-btn">Pay</button>
+        </form>
     </div>
     
     
