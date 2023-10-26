@@ -2,20 +2,11 @@ import { cookieMenu } from '/data.js'
  
 const menuContainer = document.getElementById('menu-container')
 const orderContainer = document.getElementById('order-container')
+const payModal = document.getElementById('payment-modal')
 
-//use uuids to identify different elements of the order basket
+//use uuids to identify different elements of the order basket ??
 //let uuidCounter = 0
 
-orderContainer.innerHTML =
-`<p class="order-title">Your Order</p>
-<div class="order-list"></div>
-<div class="order-divider"></div>
-<div class="total-price-review">
-    <p class="total-price-title">Total Price</p>
-    <p class="total-price"></p>
-</div>
-<button class="order-btn">Complete order</button>
-`
 
 //One event listener to group all clicks using data attributes
 document.addEventListener('click', (e) => {
@@ -23,6 +14,10 @@ document.addEventListener('click', (e) => {
         handleSelectionClick(e.target.dataset.select)
     } else if (e.target.dataset.remove) {
         handleRemoveClick(e.target.dataset.remove)
+    } else if (e.target.id === 'order-btn') {
+        handleOrderClick()
+    } else if (e.target.id === 'pay-btn') {
+        handlePayClick()
     }
 })
 
@@ -43,19 +38,25 @@ function handleSelectionClick(cookieData) {
 }
 
 function handleRemoveClick(itemIndex) {
-    //const itemObj = orderArray.filter((item) => {
-    //    return item.uuid == itemIndex
-    //})[0]
     orderArray.splice(itemIndex, 1)
     // as an alternative to rebuilding the html with renderOrder(),
     // the following could be used to just remove one element at a time
-    // (in this case, the respective itemIndex needs to be figured out via the item's uuid)
+    // (in this case, respective itemIndex needs to be figured out via item's uuid)
     //let removedItem = document.querySelectorAll('.item-review')[itemIndex]
     //removedItem.remove()
     updateOrderHtml()
     renderOrder()
 }
 console.log(orderArray)
+
+function handlePayClick() {
+    payModal.style.display = 'none'
+    // display thank you message
+}
+
+function handleOrderClick() {
+    payModal.style.display = 'flex'
+}
 
 function renderOrder() {
     const reviewOrder = document.querySelector('.order-list')
