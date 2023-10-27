@@ -33,27 +33,29 @@
                 <p class="total-price-title">Total Price</p>
                 <p class="total-price"></p>
             </div>
-            <button class="order-btn" id="order-btn" 
+            <button type="button" class="order-btn" id="order-btn" 
             data-order="order-btn">Complete order</button>
         </div>
 
     </div>
     
     <div class="payment-modal" id="payment-modal">
-        <h4 class="payment-title">Enter card details</h4>
-        <form>
-            <input type="text" class="payment-name" 
-            placeholder="Enter your name" required>
-            <input type="tel" class="payment-card"  
-            inputmode="numeric" pattern="[0-9\s]{13,19}" 
-            autocomplete="cc-number" maxlength="19" 
-            placeholder="Enter card number" required>
-            <input type="tel" class="payment-cvv"  
-            inputmode="numeric" pattern="\d*"
-            maxlength="4" placeholder="Enter CVV" required>
-            <button class="payment-btn" id="pay-btn"
-            data-pay="pay-btn">Pay</button>
-        </form>
+        <div class="pay-modal-inner">
+            <h4 class="payment-title">Enter card details</h4>
+            <form id="pay-form" action="#" method="POST">
+                <input type="text" name="name" id="name" 
+                placeholder="Enter your name" required />
+                <input type="tel" name="ccn" id="ccn"  
+                inputmode="numeric" pattern="[0-9\s]{13,19}" 
+                autocomplete="cc-number" maxlength="19" 
+                placeholder="Enter card number" required />
+                <input type="tel" name="cvv" id="cvv" 
+                inputmode="numeric" pattern="\d*"
+                maxlength="4" placeholder="Enter CVV" required />
+                <button type="submit" class="pay-btn" 
+                id="pay-btn">Pay</button>
+            </form>
+        </div>
     </div>
     
     
