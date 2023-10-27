@@ -182,7 +182,7 @@ p {
 }
 
 .order-btn,
-.payment-btn {
+.pay-btn {
     border: none;
     background-color: #16DB99;
     color: white;
@@ -217,6 +217,10 @@ p {
     box-shadow: 5px 5px 10px #d1cccc;
 }
 
+.pay-modal-inner {
+    width: 100%;
+}
+
 input {
     border: 1px solid #b1abab;
     background-color: transparent;
@@ -233,7 +237,7 @@ input {
     color: #b1abab;
 }
 
-.payment-btn {
+.pay-btn {
     font-size: medium;
     cursor: pointer;
     margin-top: 10px;
