@@ -153,17 +153,19 @@ p {
 }
 
 .item-review {
-    gap: 1rem;
+    gap: 9.3rem;
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+.item-remove-pair {
+    display: flex;
 }
 
 .total-price-review {
     gap: 15rem;
 }
 
-.cookie-review,
-.remove-btn,
 .total-price-title {
     margin-right: 20px;
 }
