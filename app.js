@@ -30,14 +30,31 @@ payForm.addEventListener('submit', (e) =>
 let orderArray = []
 
 function handlePayClick() {
-    const payName = document.querySelector('#name').value
     payModal.style.display = 'none'
+    const nameDisplay = document.createElement('p')
+    nameDisplay.classList.add('order-confirm-msg')
+    nameDisplay.textContent = `Thanks, 
+    ${document.querySelector('#name').value}! 
+    Your order is on its way!`
     orderContainer.innerHTML = `
-    <div class="order-confirm">
-        <p class="order-confirm-msg">Thanks, ${payName}! 
-        Your order is on its way!</p>
-    </div>
+    <div class="order-confirm"></div>
     `
+    document.querySelector('.order-confirm').append(nameDisplay)
+
+    setTimeout( () => {
+        orderArray = []
+        orderContainer.innerHTML = `
+            <p class="order-title">Your Order</p>
+            <div class="order-list"></div>
+            <div class="order-divider"></div>
+            <div class="total-price-review">
+                <p class="total-price-title">Total Price</p>
+                <p class="total-price"></p>
+            </div>
+            <button type="button" class="order-btn" id="order-btn" 
+            data-order="order-btn">Complete order</button>
+        `
+    }, 3000) 
 }
 
 function handleOrderClick() {
@@ -47,7 +64,7 @@ function handleOrderClick() {
 // Tests that the id property in data.js is the same as id stored in 
 //cookieData, which comes from select-button data attribute.
 // Use [0] because we want to target the object in array of which there 
-//is only one (id is unique). Pushes targetCookieObj to orderArray
+//is only one (id is unique). Adds targetCookieObj to orderArray.
 function handleSelectionClick(cookieData) {
     const targetCookieObj = cookieMenu.filter((cookie) => {
         return cookie.id == cookieData
