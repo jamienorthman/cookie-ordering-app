@@ -1,8 +1,10 @@
 import { cookieMenu } from '/data.js'
+import { v4 as uuidv4 } from 'https://jspm.dev/uuid'
  
 const menuContainer = document.getElementById('menu-container')
 const orderContainer = document.getElementById('order-container')
 const payModal = document.getElementById('payment-modal')
+const payForm = document.getElementById('pay-form')
 
 //use uuids to identify different elements of the order basket ??
 //let uuidCounter = 0
@@ -21,8 +23,27 @@ document.addEventListener('click', (e) => {
     }
 })
 
+payForm.addEventListener('submit', (e) => 
+    e.preventDefault()
+)
+
 //initialize orderArray
 let orderArray = []
+
+function handlePayClick() {
+    const payName = document.querySelector('#name').value
+    payModal.style.display = 'none'
+    orderContainer.innerHTML = `
+    <div class="order-confirm">
+        <p class="order-confirm-msg">Thanks, ${payName}! 
+        Your order is on its way!</p>
+    </div>
+    `
+}
+
+function handleOrderClick() {
+    payModal.style.display = 'flex'
+}
 
 // Tests that the id property in data.js is the same as id stored in 
 //cookieData, which comes from select-button data attribute.
@@ -49,21 +70,6 @@ function handleRemoveClick(itemIndex) {
 }
 console.log(orderArray)
 
-function handlePayClick() {
-    const payName = document.querySelector('.payment-name').value
-    payModal.style.display = 'none'
-    orderContainer.innerHTML = `
-    <div class="order-confirm">
-        <p class="order-confirm-msg">Thanks, ${payName}! 
-        Your order is on its way!</p>
-    </div>
-    `
-}
-
-function handleOrderClick() {
-    payModal.style.display = 'flex'
-}
-
 function renderOrder() {
     const reviewOrder = document.querySelector('.order-list')
     reviewOrder.innerHTML = ""
@@ -73,7 +79,7 @@ function renderOrder() {
             <div class="item-review">
                 <img src="${item.img}" class="cookie-img">
                 <p class="cookie-review">${item.name}</p>
-                <button class="remove-btn" data-remove="
+                <button type="button" class="remove-btn" data-remove="
                 ${orderArray.indexOf(item)}">remove</button>
                 <p class="price-review">$${item.price}</p>
             </div>
@@ -109,7 +115,8 @@ function getCookieHtml(cookieMenu) {
                     <p class="ingredients">${renderedIngredients}</p>
                     <p class="price">$${cookie.price}</p>
                 </div>
-                <button class="select-btn" data-select="${cookie.id}">+</button>
+                <button type="button" class="select-btn" 
+                data-select="${cookie.id}">+</button>
             </div>
             <div class="divider-container">
                 <div class="divider"></div>
