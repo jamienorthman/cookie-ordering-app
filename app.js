@@ -1,5 +1,4 @@
 import { cookieMenu } from '/data.js'
-import { v4 as uuidv4 } from 'https://jspm.dev/uuid'
  
 const menuContainer = document.getElementById('menu-container')
 const orderContainer = document.getElementById('order-container')
@@ -77,10 +76,11 @@ function renderOrder() {
     orderArray.forEach(item => {
         reviewOrder.innerHTML += `
             <div class="item-review">
-                <img src="${item.img}" class="cookie-img">
-                <p class="cookie-review">${item.name}</p>
-                <button type="button" class="remove-btn" data-remove="
-                ${orderArray.indexOf(item)}">remove</button>
+                <div class="item-remove-pair">
+                    <p class="cookie-review">${item.name}</p>
+                    <button type="button" class="remove-btn" data-remove="
+                    ${orderArray.indexOf(item)}">remove</button>
+                </div>
                 <p class="price-review">$${item.price}</p>
             </div>
             `
