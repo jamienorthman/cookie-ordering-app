@@ -17,19 +17,35 @@ document.addEventListener('click', (e) => {
         handleRemoveClick(e.target.dataset.remove)
     } else if (e.target.id === 'order-btn') {
         handleOrderClick()
-    } else if (e.target.id === 'pay-btn') {
+    } /*else if (e.target.id === 'pay-btn') {
         handlePayClick()
-    }
+    }*/
 })
 
-payForm.addEventListener('submit', (e) => 
+payForm.addEventListener('submit', (e) => {
     e.preventDefault()
-)
+    const payFormData = new FormData(payForm)
+    const name = payFormData.get('name')
+
+    payModal.style.display = 'none'
+    const nameDisplay = document.createElement('p')
+    nameDisplay.classList.add('order-confirm-msg')
+    nameDisplay.textContent = `Thanks, ${name}! Your order is on its way!`
+    orderContainer.innerHTML = `
+    <div class="order-confirm"></div>
+    `
+    document.querySelector('.order-confirm').append(nameDisplay)
+
+    setTimeout( () => {
+        orderArray = []
+        orderContainer.innerHTML = ``
+    }, 3000) 
+})
 
 //initialize orderArray
 let orderArray = []
 
-function handlePayClick() {
+/*function handlePayClick() {
     payModal.style.display = 'none'
     const nameDisplay = document.createElement('p')
     nameDisplay.classList.add('order-confirm-msg')
@@ -43,19 +59,9 @@ function handlePayClick() {
 
     setTimeout( () => {
         orderArray = []
-        orderContainer.innerHTML = `
-            <p class="order-title">Your Order</p>
-            <div class="order-list"></div>
-            <div class="order-divider"></div>
-            <div class="total-price-review">
-                <p class="total-price-title">Total Price</p>
-                <p class="total-price"></p>
-            </div>
-            <button type="button" class="order-btn" id="order-btn" 
-            data-order="order-btn">Complete order</button>
-        `
+        orderContainer.innerHTML = ``
     }, 3000) 
-}
+}*/
 
 function handleOrderClick() {
     payModal.style.display = 'flex'
@@ -69,7 +75,7 @@ function handleSelectionClick(cookieData) {
     const targetCookieObj = cookieMenu.filter((cookie) => {
         return cookie.id == cookieData
     })[0]
-    orderArray.unshift(targetCookieObj)
+    orderArray.push(targetCookieObj)
     updateOrderHtml()
     renderOrder()  
 }
