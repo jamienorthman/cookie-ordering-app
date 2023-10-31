@@ -17,11 +17,11 @@ document.addEventListener('click', (e) => {
         handleRemoveClick(e.target.dataset.remove)
     } else if (e.target.id === 'order-btn') {
         handleOrderClick()
-    } /*else if (e.target.id === 'pay-btn') {
-        handlePayClick()
-    }*/
+    }
 })
 
+//Form needs 'submit' event listener so required input fields
+//work. innerHTML is not used when input comes from user.
 payForm.addEventListener('submit', (e) => {
     e.preventDefault()
     const payFormData = new FormData(payForm)
@@ -44,24 +44,6 @@ payForm.addEventListener('submit', (e) => {
 
 //initialize orderArray
 let orderArray = []
-
-/*function handlePayClick() {
-    payModal.style.display = 'none'
-    const nameDisplay = document.createElement('p')
-    nameDisplay.classList.add('order-confirm-msg')
-    nameDisplay.textContent = `Thanks, 
-    ${document.querySelector('#name').value}! 
-    Your order is on its way!`
-    orderContainer.innerHTML = `
-    <div class="order-confirm"></div>
-    `
-    document.querySelector('.order-confirm').append(nameDisplay)
-
-    setTimeout( () => {
-        orderArray = []
-        orderContainer.innerHTML = ``
-    }, 3000) 
-}*/
 
 function handleOrderClick() {
     payModal.style.display = 'flex'
@@ -135,7 +117,7 @@ function getCookieHtml(cookieMenu) {
                 <img src="${cookie.img}" class="cookie-img">
                 <div class="price-info-container">
                     <p class="cookie-name">${cookie.name}</p>
-                    <p class="ingredients">${renderedIngredients}</p>
+                    <p class="ingredients">${renderedIngredients.join(', ')}</p>
                     <p class="price">$${cookie.price}</p>
                 </div>
                 <button type="button" class="select-btn" 
