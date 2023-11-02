@@ -26,6 +26,8 @@ body {
     background-color: white;
     border: none;
     padding-bottom: 20px;
+    min-height: 100vh;
+    position: relative;
 }
 
 .banner-img {
@@ -79,7 +81,6 @@ p {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    border: none;
 }
 
 .select-btn {
@@ -139,6 +140,7 @@ p {
     flex-direction: column;
     margin: auto;
     gap: 2rem;
+    padding-bottom: 2.5rem;
 }
 
 .order-list {
@@ -268,6 +270,15 @@ input {
 .order-confirm-msg {
     color: #065F46;
     font-size: medium;
+}
+
+.img-attribution {
+    margin-top: auto;
+    bottom: 0;
+    font-size: 0.55rem;
+    text-align: center;
+    height: 2.5rem;
+    width: 100%;
 }
 
 
