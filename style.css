@@ -59,12 +59,11 @@ p {
 }
 
 .cookie-container {
-    max-width: 90%;
+    width: 90%;
     padding: 20px 5px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    gap: 2.5rem;
     cursor: pointer;
 }
 
